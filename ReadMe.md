@@ -1,4 +1,4 @@
-#大纲
+# 大纲
 * darknet-ros
 * markdetect
 * zed-ros-wrapper
@@ -9,9 +9,11 @@
 ### darknet-ros
 
 > 2018.6.21
+
 修改`config/`里面`ros.yaml`文件里的节点。
 
 ### zed-ros-wrapper
 
 > 2018.6.21
-选择32位深度图
+
+选择32位深度图.
