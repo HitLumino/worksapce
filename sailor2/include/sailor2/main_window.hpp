@@ -7,6 +7,7 @@
  **/
 #ifndef sailor2_MAIN_WINDOW_H
 #define sailor2_MAIN_WINDOW_H
+//#include <ros/ros.h>
 #include <opencv2/opencv.hpp>
 #include <QtGui/QMainWindow>
 #include "ui_main_window.h"
@@ -29,6 +30,7 @@
 #include "QFile"
 #include "QDebug"
 #include <sstream>
+
 namespace sailor2 {
 
 using namespace std;

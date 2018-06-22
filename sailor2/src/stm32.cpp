@@ -51,7 +51,7 @@ void STM32::update_start()
 
    }
 // if((Check_Sign==0)&&(Check_imu==0))
-   if((Check_Sign==0))
+   if((Check_Sign==0))//改回0
    {
        Q_EMIT this->check_successful();
        Updata_timer->start(30);

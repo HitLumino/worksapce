@@ -12,6 +12,7 @@
 #include <QtGui>
 #include <QMessageBox>
 #include <iostream>
+#include <ros/ros.h>
 #include "../include/sailor2/main_window.hpp"
 
 /*****************************************************************************
@@ -82,9 +83,9 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
     connect(this,SIGNAL(emit_start_PID_Control()),Stm32,SLOT(start_PID_Control()));
     connect(this,SIGNAL(emit_stop_PID_Control()),Stm32,SLOT(stop_PID_Control()));
     //Reset STM32
-    connect(ui.STM32_Reset,SIGNAL(clicked()),Stm32,SLOT(STM32_Reset()));
-    connect(this,SIGNAL(emit_STM32_Reset_Update_Start()),Stm32,SLOT(update_start()));
-    connect(this,SIGNAL(emit_STM32_Reset_Update_Stop()),Stm32,SLOT(update_stop()));
+    //connect(ui.STM32_Reset,SIGNAL(clicked()),Stm32,SLOT(STM32_Reset()));
+    //connect(this,SIGNAL(emit_STM32_Reset_Update_Start()),Stm32,SLOT(update_start()));
+    //connect(this,SIGNAL(emit_STM32_Reset_Update_Stop()),Stm32,SLOT(update_stop()));
     //Remote control
     ui.Start_Check->setShortcut(Qt::Key_0);  //check
     ui.open_camera->setShortcut(Qt::Key_1);   //open camera
@@ -156,21 +157,17 @@ vector<string> split(string& sailor)//根据空格划分
 }
 void* thread1(void *ptr)
 {
-    QFile pose_file("/home/nvidia/Trajectory_ROS.txt");
-    int index=0;//
-    while(1)
-    {
-        if(!pose_file.open(QIODevice::ReadWrite|QIODevice::Text))
-        {
-            qDebug()<<"The pose_file open is failed"<<endl;
-        }
-        while(!pose_file.atEnd())
-        {
+    ros::Rate loop_rate(30);
+    int count = 0;
+    while ( ros::ok() ) {
+        std::cout<<"1"<<std::endl;
+        //cv::imshow("")
 
-        }
-
+        ros::spinOnce();
+        loop_rate.sleep();
+        ++count;
     }
-    return 0;
+    //return 0;
 }
 
 void MainWindow::get_slam_pose()
@@ -279,7 +276,8 @@ void MainWindow::on_open_camera_clicked()
 //读取摄像头并显示在窗口
 void MainWindow::readcamera_Frame()
 {
-    capture>>camera_frame;
+    camera_frame=im_raw;
+    //std::cout<<camera_frame.<<std::endl;
     if(!camera_frame.empty())
     {
         camera_image=cvMat2QImage(camera_frame);
@@ -356,8 +354,8 @@ void MainWindow::readcamera_Frame()
 //        }
 //        else
 //        {
-       //     QImage camera_result=camera_image.scaled(ui->camera->width(),ui->camera->height(),Qt::IgnoreAspectRatio,Qt::SmoothTransformation).rgbSwapped();
-      //      ui->camera->setPixmap(QPixmap::fromImage(camera_result));
+            QImage camera_result=camera_image.scaled(ui.camera->width(),ui.camera->height(),Qt::IgnoreAspectRatio,Qt::SmoothTransformation).rgbSwapped();
+            ui.camera->setPixmap(QPixmap::fromImage(camera_result));
 //        }
     }
 

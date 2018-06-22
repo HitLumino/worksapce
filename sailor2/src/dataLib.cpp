@@ -9,7 +9,7 @@
 
 namespace sailor2 {
 int state=1;
-
+cv::Mat im_raw;
 int Check_Sign=0;
 int Check_imu=1;
 

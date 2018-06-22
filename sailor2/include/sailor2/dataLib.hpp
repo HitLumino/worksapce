@@ -8,14 +8,14 @@
 #include <QTimer>
 
 #include <QPoint>
-
+#include <opencv2/opencv.hpp>
 
 namespace sailor2 {
 extern int state;
 
 extern int Check_Sign;
 extern int Check_imu;
-
+extern cv::Mat im_raw;
 extern double Visual_Traslation_Matrix[16];
 extern double Visual_Eular[3];
 extern double Visual_Position[3];
