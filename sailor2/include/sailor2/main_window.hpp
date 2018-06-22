@@ -96,12 +96,12 @@ public Q_SLOTS:
         void on_Depth_Send_clicked();
         void on_Depth_Rate_Send_clicked();
         void on_Target_Position_Send_clicked();
-        void on_AUV_Hover_clicked(bool checked);
-        void on_AUV_START_clicked(bool checked);
+        //void on_AUV_Hover_clicked(bool checked);
+        //void on_AUV_START_clicked(bool checked);
         void on_AUV_Hover_clicked();
-        void on_Tele_Auto_clicked();
+        //void on_Tele_Auto_clicked();
         void on_AUV_Hover_Stop_clicked();
-        void on_Tele_Ahead_clicked(bool checked);
+        //void on_Tele_Ahead_clicked(bool checked);
 
         void on_STM32_Reset_clicked();
         void on_Test_clicked();

@@ -259,19 +259,12 @@ void MainWindow::pwm_imu_dispay()
 //打开摄像头
 void MainWindow::on_open_camera_clicked()
 {
-
      //capture.open(0);
      camera_timer->start(50);
      //ui->groupBox_3->setEnabled(true);
      ui.shoot_video->setEnabled(true);
      ui.open_camera->setEnabled(false);
      ui.stop_video->setEnabled(false);
-
-
-     //cout<<"open camera"<<endl;
-
-    //cout<<"open camera"<<endl;
-
 }
 //读取摄像头并显示在窗口
 void MainWindow::readcamera_Frame()
