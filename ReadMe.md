@@ -15,6 +15,7 @@
 ### sailor2
 > 2018.6.22 version 0.1
 基本完成Qt界面改写成ROS节点。
+
 > 2018.6.22 version 0.1
 可以实现订阅物体检测输出图像，在Qt界面里显示。
 ### zed-ros-wrapper
